@@ -1,6 +1,10 @@
+const playGame = () =>{
+    
 const choices = [`rock`,`paper`,`scissors`,`lizard`,`spock`];
 
 const humanChoice = prompt(`rock, paper, scissors, lizard, or spock?`);
+
+const humanResult = humanChoice.toLowerCase()
 
 const machineChoice = Math.floor(Math.random()* 5);
 
@@ -14,15 +18,14 @@ const rules = {
     spock: [`scissors`, `rock`]
 };
 
-console.log(`You chose ${humanChoice}`);
-console.log(`Computer chose ${machineResult}`)
+document.getElementById("humanResult").innerHTML = `You chose ${humanResult}`;
+document.getElementById("machineResult").innerHTML = `Computer chose ${machineResult}`;
 
-if (rules[humanChoice].includes(machineResult)){
-    console.log(`Winner!`)
-} else if(humanChoice === machineResult){
-    console.log(`Tie!`)
+if (rules[humanResult].includes(machineResult)){
+    document.getElementById("result").innerHTML = `Winner!`;
+} else if(humanResult === machineResult){
+    document.getElementById("result").innerHTML = `Tie!`;
 } else {
-    console.log(`Loser!`)
+    document.getElementById("result").innerHTML = `Loser!`;
 }
-
-playGame(humanChoice)
+}

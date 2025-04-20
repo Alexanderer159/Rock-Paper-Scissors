@@ -9,8 +9,20 @@
 </head>
   <body>
     <div class="container-fluid">
-      <div class="container-fluid m-auto p-5 d-flex">
+      <div class="container-fluid mx-auto my-2 py-5 d-flex align-items-center justify-content-center">
       <h1>Welcome to Rock, Paper, Scissors, Lizard, Spock!</h1>
+      </div>
+      <div class="container-fluid m-auto d-flex my-2 flex-column align-items-center justify-content-center">
+        <p class="fs-2">Rules!</p>
+        <img src="https://html-1-9408894.codehs.me/Photos/RPSLS.png" class="img-fluid" style="width: 500px; height: 500px; object-fit: cover;" alt="rules">
+      </div>
+      <div class="container-fluid m-auto d-flex align-items-center justify-content-center">
+      <button type="button" class="btn btn-secondary" onclick="playGame()">Lets Play!</button>
+      </div>
+      <div class="container-fluid m-auto d-flex my-3 flex-column align-items-center justify-content-center">
+        <p id="humanResult" ></p>
+        <p id="machineResult" ></p>
+        <p id="result" ></p>
       </div>
     </div>
   </body>
