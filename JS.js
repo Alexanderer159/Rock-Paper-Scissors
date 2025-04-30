@@ -1,16 +1,6 @@
-const playGame = () =>{
-    
-const choices = [`rock`,`paper`,`scissors`,`lizard`,`spock`];
+const gameChoices = [`rock`,`paper`,`scissors`,`lizard`,`spock`];
 
-const humanChoice = prompt(`rock, paper, scissors, lizard, or spock?`);
-
-const humanResult = humanChoice.toLowerCase()
-
-const machineChoice = Math.floor(Math.random()* 5);
-
-const machineResult = choices[machineChoice];
-
-const rules = {
+const gameRules = {
     rock: [`scissors`, `lizard`],
     paper: [`rock`, `spock`],
     scissors: [`paper`, `lizard`],
@@ -18,14 +8,34 @@ const rules = {
     spock: [`scissors`, `rock`]
 };
 
-document.getElementById("humanResult").innerHTML = `You chose ${humanResult}`;
-document.getElementById("machineResult").innerHTML = `Computer chose ${machineResult}`;
-
-if (rules[humanResult].includes(machineResult)){
-    document.getElementById("result").innerHTML = `Winner!`;
-} else if(humanResult === machineResult){
-    document.getElementById("result").innerHTML = `Tie!`;
-} else {
-    document.getElementById("result").innerHTML = `Loser!`;
+const getHumanChoice = () =>{
+    return document.getElementById("humanChoice").value;
 }
+
+const getMachineChoice = () =>{
+    const machineChoice = Math.floor(Math.random() * gameChoices.length);
+    return gameChoices[machineChoice];
+}
+
+const displayResults= (humanChoice, machineChoice, result) => {
+    document.getElementById("humanResult").innerHTML = `You chose ${humanChoice}  >`;
+    document.getElementById("machineResult").innerHTML = `Computer chose ${machineChoice}  >`;
+    document.getElementById("result").innerHTML = result;
+}
+
+const getResults=(humanChoice, machineChoice) =>{
+    if (gameRules[humanChoice].includes(machineChoice)){
+        return `Winner!`;
+    } else if(humanChoice === machineChoice){
+        return `Tie!`;
+    } else {
+        return `Loser!`;
+    }
+}
+
+const playGame = () =>{
+    const humanChoice = getHumanChoice();
+    const machineChoice = getMachineChoice(); 
+    const result = getResults(humanChoice, machineChoice);
+displayResults(humanChoice, machineChoice, result);
 }
